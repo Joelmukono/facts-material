@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Facts Africa</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="login_button">Sign In</string>
+    <string name="login">Login</string>
+    <string name="logoDescription">Logo</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+</resources>
