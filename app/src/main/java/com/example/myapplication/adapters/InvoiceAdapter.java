@@ -19,6 +19,8 @@ import com.example.myapplication.models.User;
 import com.example.myapplication.network.ApiClient;
 import com.example.myapplication.network.FactsAfricaApi;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -85,13 +87,5 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.InvoiceV
             mDueDate.setText(String.format("Due Date: %s", invoice.getDueDate()));
             mRecipient.setText(invoice.getBuyerId().toString());
         }
-    }
-
-    public void sortByAmount() {
-
-    }
-
-    public void sortByDate() {
-
     }
 }
