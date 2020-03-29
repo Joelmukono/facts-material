@@ -51,6 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/search_bg"
+                app:queryBackground="@android:color/transparent"
                 app:queryHint="Search invoices by number, buyer or amount"
                 android:layout_margin="8dp"
                 app:iconifiedByDefault="false"/>

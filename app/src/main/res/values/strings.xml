@@ -7,10 +7,11 @@
     <string name="logoDescription">Logo</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_saved">Saved Invoices</string>
+    <string name="title_transactions">Transactions</string>
     <string name="sort">Sort</string>
     <string name="appbar_logo">Appbar Logo</string>
     <string name="invoices">Invoices</string>
     <string name="facts_logo">Facts Logo</string>
+    <string name="account">Account</string>
 </resources>
