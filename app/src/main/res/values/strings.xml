@@ -14,4 +14,10 @@
     <string name="invoices">Invoices</string>
     <string name="facts_logo">Facts Logo</string>
     <string name="account">Account</string>
+    <string name="invoice_image">Invoice Image</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="notifications">Notifications</string>
+    <string name="all_my_invoices">All My Invoices</string>
+    <string name="all_my_buyers">All My Buyers</string>
 </resources>
