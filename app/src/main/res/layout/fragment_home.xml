@@ -13,7 +13,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/refresh"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@android:color/white">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/invoiceToolbar"
@@ -40,6 +41,15 @@
                 android:text="@string/invoices"
                 android:layout_gravity="center_horizontal"/>
         </com.google.android.material.appbar.MaterialToolbar>
+
+        <androidx.appcompat.widget.SearchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/search_bg"
+            app:queryBackground="@android:color/transparent"
+            app:queryHint="Search invoices by number, buyer or amount"
+            android:layout_margin="8dp"
+            app:iconifiedByDefault="false"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <ProgressBar
