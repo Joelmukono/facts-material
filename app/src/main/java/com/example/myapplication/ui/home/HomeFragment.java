@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -39,11 +40,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private View root;
     private static final int SORT_AMOUNT = 0;
     private static final int SORT_DATE_CREATED = 1;
+    private static final int SORT_DATE_DUE = 2;
     private int currentSort = SORT_DATE_CREATED;
     @BindView(R.id.invoiceRecycler) RecyclerView mInvoiceRecycler;
     @BindView(R.id.invoiceProgress) ProgressBar mInvoiceProgressBar;
     @BindView(R.id.refresh) SwipeRefreshLayout refresh;
     @BindView(R.id.invoiceToolbar) MaterialToolbar mInvoicesToolbar;
+    @BindView(R.id.invoiceSearch) androidx.appcompat.widget.SearchView mInvoiceSearch;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
@@ -96,9 +99,24 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         });
     }
 
+    /* Search invoices */
+    private void searchInvoices() {
+        mInvoiceSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+    }
+
     /* Handle sort */
     private void onSortClicked() {
-        String[] items = {"Amount", "Date Created"};
+        String[] items = {"Amount", "Date Created", "Due Date"};
         new MaterialAlertDialogBuilder(root.getContext())
                 .setTitle("Sort Order")
                 .setSingleChoiceItems(items, currentSort, (dialog, which) -> {
@@ -117,11 +135,20 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     return o2.getId().compareTo(o1.getId());
                 }
             });
-        } else if (currentSort == SORT_AMOUNT) {
+        }
+        else if (currentSort == SORT_AMOUNT) {
             Collections.sort(invoices, new Comparator<Invoice>() {
                 @Override
                 public int compare(Invoice o1, Invoice o2) {
                     return o2.getInvoiceAmount().compareTo(o1.getInvoiceAmount());
+                }
+            });
+        }
+        else if (currentSort == SORT_DATE_DUE) {
+            Collections.sort(invoices, new Comparator<Invoice>() {
+                @Override
+                public int compare(Invoice o1, Invoice o2) {
+                    return o1.getDueDate().compareTo(o2.getDueDate());
                 }
             });
         }

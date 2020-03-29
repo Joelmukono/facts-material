@@ -1,23 +1,20 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.models.Login;
 import com.example.myapplication.models.User;
 import com.example.myapplication.network.ApiClient;
 import com.example.myapplication.network.FactsAfricaApi;
-import com.example.myapplication.utils.Constants;
 import com.example.myapplication.utils.FactsPreferences;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;

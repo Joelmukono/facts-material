@@ -43,6 +43,7 @@
         </com.google.android.material.appbar.MaterialToolbar>
 
         <androidx.appcompat.widget.SearchView
+            android:id="@+id/invoiceSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/search_bg"
@@ -60,7 +61,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
-    
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/refresh"
         android:layout_width="match_parent"
@@ -81,5 +82,22 @@
             app:layout_constraintRight_toRightOf="parent"
             tools:listitem="@layout/invoice_list"/>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/refresh"
+        app:layout_constraintRight_toRightOf="@id/refresh">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floating_action_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_margin="16dp"
+            app:srcCompat="@drawable/ic_add_white_24dp"
+            app:tint="@android:color/white"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,32 +2,21 @@ package com.example.myapplication.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.HomeActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.models.Invoice;
-import com.example.myapplication.models.User;
-import com.example.myapplication.network.ApiClient;
-import com.example.myapplication.network.FactsAfricaApi;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.InvoiceViewHolder> {
     private List<Invoice> invoiceList;
