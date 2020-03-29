@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,6 +27,7 @@ import com.example.myapplication.adapters.InvoiceAdapter;
 import com.example.myapplication.models.Invoice;
 import com.example.myapplication.network.ApiClient;
 import com.example.myapplication.network.FactsAfricaApi;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -37,24 +39,37 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements View.OnClickListener {
     private InvoiceAdapter invoiceAdapter;
     private List<Invoice> invoices;
     private View root;
+    private static final int SORT_AMOUNT = 0;
+    private static final int SORT_DATE = 1;
+    private int currentSort = SORT_DATE;
     @BindView(R.id.invoiceRecycler) RecyclerView mInvoiceRecycler;
     @BindView(R.id.invoiceProgress) ProgressBar mInvoiceProgressBar;
     @BindView(R.id.refresh) SwipeRefreshLayout refresh;
-
-    private HomeViewModel homeViewModel;
+    @BindView(R.id.invoiceToolbar) MaterialToolbar mInvoicesToolbar;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
+        HomeViewModel homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         root = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this, root);
         ((HomeActivity) getActivity()).authListener();
         loadInvoices();
         refresh.setOnRefreshListener(this::loadInvoices);
+        mInvoicesToolbar.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.sort) {
+                onSortClicked();
+            }
+            return false;
+        });
         return root;
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 
     /* Get all invoices */
@@ -84,6 +99,27 @@ public class HomeFragment extends Fragment {
                 showErrorSnackbar();
             }
         });
+    }
+
+    /* Handle sort */
+    private void onSortClicked() {
+        String[] items = {"Amount", "Date"};
+        new MaterialAlertDialogBuilder(root.getContext())
+                .setTitle("Sort Order")
+                .setSingleChoiceItems(items, currentSort, (dialog, which) -> {
+                    dialog.dismiss();
+                    currentSort = which;
+                    sortData();
+                }).show();
+    }
+
+    /* Sort data */
+    private void sortData() {
+        if (currentSort == SORT_AMOUNT) {
+            invoiceAdapter.sortByAmount();
+        } else if (currentSort == SORT_DATE) {
+            invoiceAdapter.sortByDate();
+        }
     }
 
     /* Error snackbar */

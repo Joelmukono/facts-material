@@ -86,4 +86,12 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.InvoiceV
             mRecipient.setText(invoice.getBuyerId().toString());
         }
     }
+
+    public void sortByAmount() {
+
+    }
+
+    public void sortByDate() {
+
+    }
 }
