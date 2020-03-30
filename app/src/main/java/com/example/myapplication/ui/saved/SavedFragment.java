@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.myapplication.HomeActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.ui.fragments.AllSavedFragment;
 import com.example.myapplication.ui.fragments.BatchInvoiceFragment;
@@ -35,6 +36,7 @@ public class SavedFragment extends Fragment {
         SavedViewModel savedViewModel = ViewModelProviders.of(this).get(SavedViewModel.class);
         View root = inflater.inflate(R.layout.fragment_saved, container, false);
         ButterKnife.bind(this, root);
+        ((HomeActivity) getActivity()).authListener();
         allSavedFragment = new AllSavedFragment();
         batchInvoiceFragment = new BatchInvoiceFragment();
         setFragments();
