@@ -16,6 +16,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.myapplication.R;
 import com.example.myapplication.ui.fragments.AllSavedFragment;
 import com.example.myapplication.ui.fragments.BatchInvoiceFragment;
+import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -38,6 +39,7 @@ public class SavedFragment extends Fragment {
         batchInvoiceFragment = new BatchInvoiceFragment();
         setFragments();
         setTabIcons();
+        setNotificationBadge();
         return root;
     }
 
@@ -86,5 +88,11 @@ public class SavedFragment extends Fragment {
     private void setTabIcons() {
         mTabLayout.getTabAt(0).setIcon(R.drawable.ic_cloud_download_black_24dp);
         mTabLayout.getTabAt(1).setIcon(R.drawable.ic_playlist_add_black_24dp);
+    }
+
+    private void setNotificationBadge() {
+        BadgeDrawable badgeDrawable = mTabLayout.getTabAt(1).getOrCreateBadge();
+        badgeDrawable.setVisible(true);
+        badgeDrawable.setNumber(12);
     }
 }
