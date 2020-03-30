@@ -38,7 +38,7 @@ public class SavedFragment extends Fragment {
         allSavedFragment = new AllSavedFragment();
         batchInvoiceFragment = new BatchInvoiceFragment();
         setFragments();
-        setTabIcons();
+//        setTabIcons();
         setNotificationBadge();
         return root;
     }
