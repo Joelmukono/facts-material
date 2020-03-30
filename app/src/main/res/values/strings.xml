@@ -22,4 +22,9 @@
     <string name="all_my_buyers">All My Buyers</string>
     <string name="logout">Logout</string>
     <string name="saved_invoices">Saved Invoices</string>
+    <string name="batched_invoices">Batch Invoices</string>
+    <string name="all_saved">All saved</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

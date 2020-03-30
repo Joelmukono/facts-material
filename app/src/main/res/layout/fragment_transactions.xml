@@ -7,7 +7,7 @@
     tools:context=".ui.transactions.TransactionsFragment">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/invoicesToolbar"
+        android:id="@+id/transactionsToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
