@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.transactions;
+package com.example.myapplication.vendor_ui.transactions;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

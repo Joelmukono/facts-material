@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.myapplication.ui.home.HomeFragment"
+        android:name="com.example.myapplication.vendor_ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_saved"
-        android:name="com.example.myapplication.ui.saved.SavedFragment"
+        android:name="com.example.myapplication.vendor_ui.saved.SavedFragment"
         android:label="@string/title_saved"
         tools:layout="@layout/fragment_saved" />
 
     <fragment
         android:id="@+id/navigation_transactions"
-        android:name="com.example.myapplication.ui.transactions.TransactionsFragment"
+        android:name="com.example.myapplication.vendor_ui.transactions.TransactionsFragment"
         android:label="@string/title_transactions"
         tools:layout="@layout/fragment_transactions" />
 
     <fragment
         android:id="@+id/navigation_account"
-        android:name="com.example.myapplication.ui.account.AccountFragment"
+        android:name="com.example.myapplication.vendor_ui.account.AccountFragment"
         android:label="@string/account"
         tools:layout="@layout/fragment_account"/>
 </navigation>

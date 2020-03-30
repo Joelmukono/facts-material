@@ -1,14 +1,14 @@
-package com.example.myapplication.ui.transactions;
+package com.example.myapplication.vendor_ui.account;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class TransactionsViewModel extends ViewModel {
+public class AccountViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public TransactionsViewModel() {
+    public AccountViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is notifications fragment");
     }

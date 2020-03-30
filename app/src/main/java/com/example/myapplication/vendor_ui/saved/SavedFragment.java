@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.saved;
+package com.example.myapplication.vendor_ui.saved;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,8 +15,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.myapplication.HomeActivity;
 import com.example.myapplication.R;
-import com.example.myapplication.ui.fragments.AllSavedFragment;
-import com.example.myapplication.ui.fragments.BatchInvoiceFragment;
+import com.example.myapplication.vendor_ui.fragments.AllSavedFragment;
+import com.example.myapplication.vendor_ui.fragments.BatchInvoiceFragment;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.tabs.TabLayout;
 

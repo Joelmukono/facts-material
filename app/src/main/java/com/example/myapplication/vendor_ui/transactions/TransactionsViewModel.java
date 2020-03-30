@@ -1,16 +1,16 @@
-package com.example.myapplication.ui.saved;
+package com.example.myapplication.vendor_ui.transactions;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SavedViewModel extends ViewModel {
+public class TransactionsViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public SavedViewModel() {
+    public TransactionsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+        mText.setValue("This is notifications fragment");
     }
 
     public LiveData<String> getText() {
