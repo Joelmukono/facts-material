@@ -24,7 +24,7 @@ android {
     sourceSets {
         main {
             res {
-                srcDirs 'src/main/res', 'src/main/res/layouts/vendor', 'src/main/res/layouts/buyer'
+                srcDirs 'src/main/res'
             }
         }
     }
