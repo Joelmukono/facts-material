@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.myapplication.HomeActivity;
+import com.example.myapplication.VendorActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.adapters.InvoiceAdapter;
 import com.example.myapplication.models.Invoice;
@@ -52,7 +52,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         HomeViewModel homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         root = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this, root);
-        ((HomeActivity) getActivity()).authListener();
+        ((VendorActivity) getActivity()).authListener();
         loadInvoices();
         refresh.setOnRefreshListener(this::loadInvoices);
         mInvoicesToolbar.setOnMenuItemClickListener(item -> {

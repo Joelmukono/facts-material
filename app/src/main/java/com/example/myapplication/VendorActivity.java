@@ -23,7 +23,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeActivity extends AppCompatActivity {
+public class VendorActivity extends AppCompatActivity {
     private FactsPreferences factsPreferences;
 
     @Override

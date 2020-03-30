@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     /* Start home activity */
     private void startHomeActivity() {
-        Intent homeIntent = new Intent(this, HomeActivity.class);
+        Intent homeIntent = new Intent(this, VendorActivity.class);
         startActivity(homeIntent);
     }
 
