@@ -27,5 +27,5 @@
         android:id="@+id/navigation_account"
         android:name="com.example.myapplication.vendor_ui.account.AccountFragment"
         android:label="@string/account"
-        tools:layout="@layout/fragment_account"/>
+        tools:layout="@layout/fragment_vendor_account"/>
 </navigation>

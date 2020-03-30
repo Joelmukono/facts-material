@@ -27,7 +27,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         AccountViewModel accountViewModel = ViewModelProviders.of(this).get(AccountViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_account, container, false);
+        View root = inflater.inflate(R.layout.fragment_vendor_account, container, false);
         ButterKnife.bind(this, root);
         mLogoutButton.setOnClickListener(this);
         ((VendorActivity) getActivity()).authListener();
