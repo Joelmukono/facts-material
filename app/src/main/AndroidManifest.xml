@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".BuyerActivity"
-            android:label="@string/title_activity_buyer"></activity>
+            android:label="@string/title_activity_buyer" />
         <activity
             android:name=".VendorActivity"
             android:label="@string/title_activity_home" />
