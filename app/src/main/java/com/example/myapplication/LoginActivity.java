@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         /* Check if user is logged in */
         factsPreferences = new FactsPreferences(this);
         if (factsPreferences.isLoggedIn()) {
-            startHomeActivity();
+            startHomeActivity(FactsPreferences.getUserRole());
             finish();
             return;
         }
@@ -63,9 +63,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     /* Start home activity */
-    private void startHomeActivity() {
-        Intent homeIntent = new Intent(this, VendorActivity.class);
-        startActivity(homeIntent);
+    private void startHomeActivity(int userRole) {
+        if (userRole == 2) {
+            Intent vendorIntent = new Intent(this, VendorActivity.class);
+            startActivity(vendorIntent);
+        } else if (userRole == 3) {
+            Intent buyerIntent = new Intent(this, BuyerActivity.class);
+            startActivity(buyerIntent);
+        } else if (userRole == 0) {
+            Intent loginIntent = new Intent(this, LoginActivity.class);
+        }
     }
 
     /* Handle clicking login */
@@ -118,8 +125,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     factsPreferences.setApiToken(token);
                     factsPreferences.setUserName(response.body().getName());
                     factsPreferences.setUserEmail(response.body().getEmail());
+                    factsPreferences.setUserRole(response.body().getRole());
                     factsPreferences.setLoggedIn(true);
-                    startHomeActivity();
+                    startHomeActivity(response.body().getRole());
                     finish();
                 } else {
                     showErrorDialog();
