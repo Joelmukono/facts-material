@@ -116,6 +116,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if (response.isSuccessful()) {
                     String token = response.body().getApiToken();
                     factsPreferences.setApiToken(token);
+                    factsPreferences.setUserName(response.body().getName());
+                    factsPreferences.setUserEmail(response.body().getEmail());
                     factsPreferences.setLoggedIn(true);
                     startHomeActivity();
                     finish();
