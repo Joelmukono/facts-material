@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.myapplication.HomeActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.utils.FactsPreferences;
 
@@ -27,6 +28,7 @@ public class AccountFragment extends Fragment {
         AccountViewModel accountViewModel = ViewModelProviders.of(this).get(AccountViewModel.class);
         View root = inflater.inflate(R.layout.fragment_account, container, false);
         ButterKnife.bind(this, root);
+        ((HomeActivity) getActivity()).authListener();
         setUserInfo();
         return root;
     }
