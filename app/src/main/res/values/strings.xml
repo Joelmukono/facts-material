@@ -20,4 +20,5 @@
     <string name="notifications">Notifications</string>
     <string name="all_my_invoices">All My Invoices</string>
     <string name="all_my_buyers">All My Buyers</string>
+    <string name="logout">Logout</string>
 </resources>

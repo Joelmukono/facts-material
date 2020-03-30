@@ -103,7 +103,7 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(loginIntent);
     }
 
-    private void logout() {
+    public void logout() {
         factsPreferences.setLoggedIn(false);
     }
 }
