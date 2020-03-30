@@ -1,21 +1,17 @@
-package com.example.myapplication.ui.account;
+package com.example.myapplication.vendor_ui.account;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.myapplication.HomeActivity;
+import com.example.myapplication.VendorActivity;
 import com.example.myapplication.LoginActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.utils.FactsPreferences;
@@ -31,10 +27,10 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         AccountViewModel accountViewModel = ViewModelProviders.of(this).get(AccountViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_account, container, false);
+        View root = inflater.inflate(R.layout.fragment_vendor_account, container, false);
         ButterKnife.bind(this, root);
         mLogoutButton.setOnClickListener(this);
-        ((HomeActivity) getActivity()).authListener();
+        ((VendorActivity) getActivity()).authListener();
         setUserInfo();
         return root;
     }
@@ -42,7 +38,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v == mLogoutButton) {
-            ((HomeActivity)getActivity()).logout();
+            ((VendorActivity)getActivity()).logout();
             Intent loginIntent = new Intent(getActivity(), LoginActivity.class);
             startActivity(loginIntent);
             getActivity().finish();

@@ -7,6 +7,7 @@ import static com.example.myapplication.utils.Constants.KEY_API_TOKEN;
 import static com.example.myapplication.utils.Constants.KEY_LOGIN_STATE;
 import static com.example.myapplication.utils.Constants.KEY_USER_EMAIL;
 import static com.example.myapplication.utils.Constants.KEY_USER_NAME;
+import static com.example.myapplication.utils.Constants.KEY_USER_ROLE;
 
 public class FactsPreferences {
     private static SharedPreferences preferences;
@@ -47,4 +48,10 @@ public class FactsPreferences {
     public static String getUserEmail() {
         return preferences.getString(KEY_USER_EMAIL,"");
     }
+
+    public void setUserRole(int userRole) {
+        preferences.edit().putInt(KEY_USER_ROLE, userRole).apply();
+    }
+
+    public static int getUserRole() { return preferences.getInt(KEY_USER_ROLE, 0); }
 }
