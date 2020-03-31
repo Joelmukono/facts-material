@@ -270,7 +270,6 @@
                     android:layout_toEndOf="@+id/price_hard_coded"
                     android:text="@string/quantity"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -281,7 +280,6 @@
                     android:layout_toEndOf="@+id/quantity_hard_coded"
                     android:text="@string/amount"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <View
@@ -337,7 +335,6 @@
                     android:layout_marginTop="24dp"
                     android:text="@string/subtotal"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -423,7 +420,7 @@
             android:id="@+id/fab_send_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_margin="16dp"
             android:backgroundTint="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="@+id/materialCardView3"
             app:layout_constraintTop_toBottomOf="@+id/materialCardView3"
