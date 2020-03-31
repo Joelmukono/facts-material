@@ -71,6 +71,7 @@
                     android:id="@+id/invoice_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:text="@string/invoice_number"
                     style="@style/TextAppearance.AppCompat.Body1"
                     android:layout_marginStart="8dp"
@@ -78,6 +79,7 @@
                 <TextView
                     android:textColor="@color/colorPrimary"
                     android:id="@+id/invoice_due_date"
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/due_date"
@@ -207,6 +209,7 @@
                 android:layout_width="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
+                android:textStyle="bold"
                 android:textColor="@color/colorPrimary"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
