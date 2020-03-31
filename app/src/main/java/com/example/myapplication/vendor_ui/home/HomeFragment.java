@@ -21,6 +21,7 @@ import com.example.myapplication.adapters.InvoiceAdapter;
 import com.example.myapplication.models.Invoice;
 import com.example.myapplication.network.ApiClient;
 import com.example.myapplication.network.FactsAfricaApi;
+import com.example.myapplication.vendor_ui.CreateInvoiceActivity;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -73,6 +74,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if(v==floatingActionButton){
+            Intent intent = new Intent(getActivity(), CreateInvoiceActivity.class);
+            startActivity(intent);
         }
 
     }

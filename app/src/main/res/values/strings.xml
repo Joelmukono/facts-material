@@ -46,7 +46,7 @@
     <string name="quantity">Quantity</string>
     <string name="amount">Amount</string>
     <string name="subtotal">Subtotal</string>
-    <string name="subtotal_amount">.......</string>
+    <string name="subtotal_amount">...............</string>
     <string name="discount">Discount</string>
     <string name="_8">8%</string>
     <string name="tax">Tax</string>
