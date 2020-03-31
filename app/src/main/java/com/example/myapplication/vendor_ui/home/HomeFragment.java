@@ -1,5 +1,6 @@
 package com.example.myapplication.vendor_ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,7 @@ import com.example.myapplication.network.ApiClient;
 import com.example.myapplication.network.FactsAfricaApi;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Collections;
@@ -47,14 +49,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.refresh) SwipeRefreshLayout refresh;
     @BindView(R.id.invoiceToolbar) MaterialToolbar mInvoicesToolbar;
     @BindView(R.id.invoiceSearch) androidx.appcompat.widget.SearchView mInvoiceSearch;
+    FloatingActionButton floatingActionButton;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         root = inflater.inflate(R.layout.fragment_home_vendor, container, false);
+        floatingActionButton = root.findViewById(R.id.floating_action_button);
         ButterKnife.bind(this, root);
         ((VendorActivity) getActivity()).authListener();
         loadInvoices();
         refresh.setOnRefreshListener(this::loadInvoices);
+        floatingActionButton.setOnClickListener(this);
         mInvoicesToolbar.setOnMenuItemClickListener(item -> {
             if (item.getItemId() == R.id.sort) {
                 onSortClicked();
@@ -66,6 +72,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        if(v==floatingActionButton){
+        }
 
     }
 
