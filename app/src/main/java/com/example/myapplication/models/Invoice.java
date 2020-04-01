@@ -167,4 +167,20 @@ public class Invoice implements Serializable
         this.updatedAt = updatedAt;
     }
 
+    public String convertStatus(){
+        String status = getInvoiceStatus().toString();
+        Integer price = getInvoiceAmount();
+        String dueDate = getDueDate();
+
+
+        if(status.equals("1")){
+            status = "pending";
+        }else if(status.equals("2")){
+            status = "approved";
+        }else{
+            status = "declined";
+        }
+        return status+price+dueDate;
+    }
+
 }

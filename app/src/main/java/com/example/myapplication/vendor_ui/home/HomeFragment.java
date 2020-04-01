@@ -49,7 +49,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.invoiceSearch) androidx.appcompat.widget.SearchView mInvoiceSearch;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
+//        HomeViewModel homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         root = inflater.inflate(R.layout.fragment_home_vendor, container, false);
         ButterKnife.bind(this, root);
         ((VendorActivity) getActivity()).authListener();
@@ -61,6 +61,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
             return false;
         });
+
+        searchInvoices();
+
         return root;
     }
 
@@ -109,6 +112,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                invoiceAdapter.getFilter().filter(newText);
                 return false;
             }
         });
