@@ -1,11 +1,16 @@
 package com.example.myapplication.vendor_ui.home;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +29,7 @@ import com.example.myapplication.utils.FactsPreferences;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import butterknife.BindView;
@@ -33,16 +39,25 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CreateInvoice extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
+public class CreateInvoice extends Fragment implements View.OnClickListener {
+
+    private static final String TAG = "CreateInvoice";
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    MaterialSpinner spinner;
+    private MaterialSpinner spinner;
     private View rootView;
-    List<String> users = new ArrayList<>();
-    ArrayAdapter<String> arrayAdapter;
+    private List<String> users = new ArrayList<>();
+
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
+    private NotificationManagerCompat managerCompat;
+
+    //Calender
+    private Calendar myCal = Calendar.getInstance();
+    private int year = myCal.get(Calendar.YEAR);
+    private int month = myCal.get(Calendar.MONTH);
+    private int day = myCal.get(Calendar.DAY_OF_WEEK);
 
     //company details
     @BindView(R.id.company_name)
@@ -61,6 +76,8 @@ public class CreateInvoice extends Fragment {
     TextView mVendorEmail;
     @BindView(R.id.vendor_phone)
     TextView mVendorPhone;
+    @BindView(R.id.invoice_due_date)
+    TextView mInvoiceDueDate;
 
 
 
@@ -89,22 +106,57 @@ public class CreateInvoice extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
+
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.d(TAG, "onCreateView called: ");
 
         rootView = inflater.inflate(R.layout.fragment_create_invoice, container, false);
         initItems();
         ButterKnife.bind(this, rootView);
         spinner = rootView.findViewById(R.id.spinner);
-        arrayAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, users );
+        mInvoiceDueDate.setOnClickListener(this);
+        initSpinner();
+        initDate();
+        return rootView;
+    }
+
+    @Override
+    public void onClick(View v) {
+        DatePickerDialog dialog = new DatePickerDialog(
+                getActivity(),
+                android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                mDateSetListener,
+                year, month, day);
+    if(v==mInvoiceDueDate){
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+
+    }
+    }
+
+    private void initDate(){
+        Log.d(TAG, "initDate called: ");
+        mDateSetListener = (datePicker, year, month, day) -> {
+            month = month + 1;
+            String date = year + "-" + month + "-" + day;
+            mInvoiceDueDate.setText(date);
+            managerCompat = NotificationManagerCompat.from(rootView.getContext());
+
+            Log.d(TAG, "initDate: "+date);
+        };
+    }
+
+    private void initSpinner(){
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, users);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
-        //((VendorActivity) getActivity()).authListener();
-        setUserInfo();
+        addUserDetails();
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -119,15 +171,12 @@ public class CreateInvoice extends Fragment {
 
             }
         });
-
-        return rootView;
     }
 
-    private void setUserInfo() {
+    private void addUserDetails() {
         mVendorName.setText(FactsPreferences.getUserName());
         mVendorEmail.setText(FactsPreferences.getUserEmail());
         mVendorPhone.setText(FactsPreferences.getUserPhone());
-
     }
 
     private void initItems(){
@@ -173,6 +222,8 @@ public class CreateInvoice extends Fragment {
             }
         });
     }
+
+
 
 //    // TODO: Rename method, update argument and hook method into UI event
 //    public void onButtonPressed(Uri uri) {
