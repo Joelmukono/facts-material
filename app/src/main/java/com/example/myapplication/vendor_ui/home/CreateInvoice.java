@@ -79,13 +79,10 @@ public class CreateInvoice extends Fragment implements View.OnClickListener {
     @BindView(R.id.invoice_due_date)
     TextView mInvoiceDueDate;
 
-
-
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-   // private OnFragmentInteractionListener mListener;
+    // private OnFragmentInteractionListener mListener;
 
     public CreateInvoice() {
         // Required empty public constructor
@@ -133,11 +130,11 @@ public class CreateInvoice extends Fragment implements View.OnClickListener {
                 android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                 mDateSetListener,
                 year, month, day);
-    if(v==mInvoiceDueDate){
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.show();
+        if(v==mInvoiceDueDate){
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.show();
 
-    }
+        }
     }
 
     private void initDate(){
