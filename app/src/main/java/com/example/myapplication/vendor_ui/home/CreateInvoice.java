@@ -15,9 +15,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.VendorActivity;
 import com.example.myapplication.models.User;
 import com.example.myapplication.network.ApiClient;
 import com.example.myapplication.network.FactsAfricaApi;
+import com.example.myapplication.utils.FactsPreferences;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -41,6 +43,8 @@ public class CreateInvoice extends Fragment {
     private View rootView;
     List<String> users = new ArrayList<>();
     ArrayAdapter<String> arrayAdapter;
+
+    //company details
     @BindView(R.id.company_name)
     TextView mCompanyName;
     @BindView(R.id.company_email)
@@ -49,6 +53,16 @@ public class CreateInvoice extends Fragment {
     TextView mCompanyPhone;
     @BindView(R.id.company_physical_address)
     TextView mPhysicalAddress;
+
+    //vendor details
+    @BindView(R.id.vendor_name)
+    TextView mVendorName;
+    @BindView(R.id.vendor_email)
+    TextView mVendorEmail;
+    @BindView(R.id.vendor_phone)
+    TextView mVendorPhone;
+
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -89,6 +103,8 @@ public class CreateInvoice extends Fragment {
         arrayAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, users );
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
+        //((VendorActivity) getActivity()).authListener();
+        setUserInfo();
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -105,6 +121,13 @@ public class CreateInvoice extends Fragment {
         });
 
         return rootView;
+    }
+
+    private void setUserInfo() {
+        mVendorName.setText(FactsPreferences.getUserName());
+        mVendorEmail.setText(FactsPreferences.getUserEmail());
+        mVendorPhone.setText(FactsPreferences.getUserPhone());
+
     }
 
     private void initItems(){
