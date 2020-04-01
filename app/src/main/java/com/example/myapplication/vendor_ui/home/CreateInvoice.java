@@ -43,6 +43,12 @@ public class CreateInvoice extends Fragment {
     ArrayAdapter<String> arrayAdapter;
     @BindView(R.id.company_name)
     TextView mCompanyName;
+    @BindView(R.id.company_email)
+    TextView mCompanyEmail;
+    @BindView(R.id.company_phone)
+    TextView mCompanyPhone;
+    @BindView(R.id.company_physical_address)
+    TextView mPhysicalAddress;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -88,9 +94,8 @@ public class CreateInvoice extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(position!=-1){
-                    mCompanyName.setText(spinner.getItemAtPosition(position).toString());
+                    getUserById(3);
                 }
-
             }
 
             @Override
@@ -117,7 +122,30 @@ public class CreateInvoice extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
+            public void onFailure(@NotNull Call<User> call, Throwable t) {
+                Toast.makeText(getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void getUserById(int id){
+        FactsAfricaApi factsAfricaApi = ApiClient.getClient().create(FactsAfricaApi.class);
+        Call<User> userCall = factsAfricaApi.getUserById(id);
+        userCall.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(@NotNull Call<User> call, @NotNull Response<User> response) {
+                if(response.isSuccessful()&&response.body()!=null){
+                    mCompanyName.setText(response.body().getName());
+                    mCompanyEmail.setText(response.body().getEmail());
+                    mCompanyPhone.setText(response.body().getPhone());
+                }
+                else {
+                    Toast.makeText(getContext(), "No Buyers", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NotNull Call<User> call, Throwable t) {
                 Toast.makeText(getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
